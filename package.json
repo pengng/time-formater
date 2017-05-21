@@ -1,0 +1,26 @@
+{
+  "name": "time-formater",
+  "version": "1.0.0",
+  "description": "Display dates in javascript. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "date",
+    "display",
+    "util",
+    "parse",
+    "format",
+    "time"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pengng/time-formater.git"
+  },
+  "author": "pengng",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0"
+  }
+}
