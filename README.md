@@ -69,7 +69,7 @@ var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 
 ## token
 
-| |       | Token  |   Output  |
+|      | Token  |   Output  |
 | ----:  | ------ | --------- |
 | __Month__ | M      | 1 2 ... 11 12 |
 | | MM | 01 02 ... 11 12 |
@@ -182,7 +182,7 @@ var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 
 ## 特定字符串所代表的含义
 
-| |       | Token  |   Output  |
+|        | Token  |   Output  |
 | ----:  | ------ | --------- |
 | __月份__ | M      | 1 2 ... 11 12 |
 | | MM | 01 02 ... 11 12 |
