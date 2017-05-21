@@ -1,29 +1,42 @@
 # time-formater
+
 Display dates in javascript.
+
 ## Usage
+
 ```bash
 npm i -S time-formater
 ```
+
 ```javascript
 const dtime = require('time-formater');
-console.log(dtime().format('YYYY-MM-DD HH:mm:ss'));
+
+var datestr = dtime().format('YYYY-MM-DD HH:mm:ss');
+console.log(datestr);
+
 // 2017-05-21 15:19:34
 ```
 
 ## Parse
+
 * **Current Time**
+
 ```javascript
 var now = dtime();
 ```
+
 Get the current time if the parameter is empty.
 
 * **number**
+
 ```javascript
 var date = dtime(1495355143424);
 ```
+
 If the parameter is a number, it indicates a UTC timestamp.
 
 * **string**
+
 ```javascript
 var date = dtime('2017-05-21');
 // or
@@ -35,21 +48,27 @@ var date = dtime('2017-05-21 19:02:59-08:00');
 // or
 var date = dtime('2017-05-21 12:38:49Z');
 ```
+
 If it is a string, it must conform to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
 * **date object**
+
 ```javascript
 var date = dtime(new Date());
 ```
+
 The argument can also be a date object.
 
 ## Display
+
 #### format(string);
+
 ```javascript
 var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 ```
 
 ## token
+
 | |       | Token  |   Output  |
 | ----:  | ------ | --------- |
 | __Month__ | M      | 1 2 ... 11 12 |
@@ -82,39 +101,55 @@ var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 | __Unix Millisecond Timestamp__ | x | 1495357559853    |
 
 ## time difference (Based on the present)
+
 #### fromNow()
+
 ```javascript
 var fromNow = dtime('2017-01-01').fromNow();
 console.log(fromNow);
+
 // 4个月前
 ```
 
 # time-formater
+
 在javascript中显示日期。
+
 ## 使用方法
+
 ```bash
 npm i -S time-formater
 ```
+
 ```javascript
 const dtime = require('time-formater');
-console.log(dtime().format('YYYY-MM-DD HH:mm:ss'));
+
+var datestr = dtime().format('YYYY-MM-DD HH:mm:ss');
+console.log(datestr);
+
 // 2017-05-21 15:19:34
 ```
 
 ## 解析
+
 * **当前时间**
+
 ```javascript
 var now = dtime();
 ```
+
 如果参数为空则获取当前系统时间。
 
 * **数字**
+
 ```javascript
 var date = dtime(1495355143424);
 ```
+
 如果传入参数为数字，则表示UTC时间戳。
 
 * **字符串**
+
 ```javascript
 var date = dtime('2017-05-21');
 // or
@@ -126,21 +161,27 @@ var date = dtime('2017-05-21 19:02:59-08:00');
 // or
 var date = dtime('2017-05-21 12:38:49Z');
 ```
+
 如果传入字符串，则必须符合[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)格式。
 
 * **原生日期对象**
+
 ```javascript
 var date = dtime(new Date());
 ```
+
 传入参数也可以是一个原生的`javascript`日期对象。
 
 ## 显示
+
 #### format(string);
+
 ```javascript
 var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 ```
 
 ## 特定字符串所代表的含义
+
 | |       | Token  |   Output  |
 | ----:  | ------ | --------- |
 | __月份__ | M      | 1 2 ... 11 12 |
@@ -173,9 +214,13 @@ var datestr = dtime().format('YYYY-MM-DD'); // 2017-05-21
 | __Unix 时间戳 毫秒__ | x | 1495357559853    |
 
 ## 时差 （以现在为基准）
+
 #### fromNow()
+
 ```javascript
 var fromNow = dtime('2017-01-01').fromNow();
+
 console.log(fromNow);
+
 // 4个月前
 ```
