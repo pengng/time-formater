@@ -1,1 +1,1 @@
-module.exports = require('./timeformater');
+module.exports = require('./timeformater')
