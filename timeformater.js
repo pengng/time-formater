@@ -2,11 +2,13 @@ const MONTH_DISPLAY = ['', '一月', '二月', '三月', '四月', '五月', '�
 const WEEK_DISPLAY = ['日', '一', '二', '三', '四', '五', '六']
 
 const TimeFormater = function (input) {
-    return new TimeFormater.fn.init(input)
+    if (!(this instanceof TimeFormater)) {
+        return new TimeFormater(input)
+    }
+    this[0] = new Date(input)
 }
 
-TimeFormater.fn = TimeFormater.prototype = {
-    constructor: TimeFormater,
+TimeFormater.prototype = {
 
     init(input) {
         if (typeof input === 'string' || typeof input === 'number') {
@@ -195,7 +197,5 @@ TimeFormater.fn = TimeFormater.prototype = {
         return parseInt(this.x() / 1000)
     }
 }
-
-TimeFormater.fn.init.prototype = TimeFormater.fn
 
 module.exports = TimeFormater
