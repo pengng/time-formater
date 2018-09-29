@@ -10,17 +10,6 @@ const TimeFormater = function (input) {
 
 TimeFormater.prototype = {
 
-    init(input) {
-        if (typeof input === 'string' || typeof input === 'number') {
-            this[0] = new Date(input)
-        } else if (input instanceof Date) {
-            this[0] = input
-        } else {
-            this[0] = new Date()
-        }
-        return this
-    },
-
     format(token) {
         if (typeof token !== 'string') {
             return this.toLocaleString()

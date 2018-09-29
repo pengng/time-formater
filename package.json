@@ -1,6 +1,6 @@
 {
     "name": "time-formater",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Display dates in javascript. ",
     "main": "index.js",
     "scripts": {
@@ -21,7 +21,6 @@
     "author": "pengng",
     "license": "ISC",
     "devDependencies": {
-        "chai": "^3.5.0",
         "mocha": "^5.2.0"
     }
 }
