@@ -1,5 +1,13 @@
 const MONTH_DISPLAY = ['', '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 const WEEK_DISPLAY = ['日', '一', '二', '三', '四', '五', '六']
+// 单位大小
+const UNIT_SIZE = {
+    d: 86400000, // 毫秒/天
+    H: 3600000, // 毫秒/小时
+    m: 60000, // 毫秒/分钟
+    s: 1000, // 毫秒/秒
+    S: 1 // 毫秒
+}
 
 const TimeFormater = function (input) {
     if (!(this instanceof TimeFormater)) {
@@ -184,6 +192,48 @@ TimeFormater.prototype = {
 
     X() {
         return parseInt(this.x() / 1000)
+    }
+}
+
+/**
+ * 倒计时
+ * @param {number|string|Date} time 类型为数字表示剩余的秒数，为Date实例或字符串（符合ISO 8601格式），表示结束的时间点。
+ */
+TimeFormater.countdown = function (time) {
+    let endPoint = 0
+    if (typeof time === 'number') {
+        // time 为数字类型，表示剩余的秒数
+        endPoint = time * 1000 + Date.now()
+    } else if (typeof time === 'string') {
+        // time 为字符串，则应符合ISO 8601格式，表示结束的时间点
+        endPoint = new Date(time).getTime()
+    } else if (time instanceof Date) {
+        // time 为Date对象实例，表示结束的时间点
+        endPoint = time.getTime()
+    }
+
+    return {
+        /**
+         * 将剩余的时间量格式化为字符串
+         * @param {string} token 用于指定输出格式。例：'剩余：d天H小时m分钟s秒' => "剩余：1天11小时4分钟38秒"。
+         */
+        format: function (token) {
+            let now = Date.now()
+            let remain = endPoint - now
+            let limit = 0 // 忽略负数
+            remain = Math.max(limit, remain)
+
+            return token.replace(/[dHmsS]/g, function (key) {
+                // 如果存在换算单位，则进行单位转换
+                if (UNIT_SIZE[key]) {
+                    let r = remain
+                    remain %= UNIT_SIZE[key]
+                    return parseInt(r / UNIT_SIZE[key])
+                } else {
+                    return key
+                }
+            })
+        }
     }
 }
 
