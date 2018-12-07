@@ -122,6 +122,7 @@ console.log(fromNow) // 4个月前
 ## countdown
 
 ```javascript
+const time = require('time-formater')
 let remain = 100000 // 10,000 seconds
 let countdown = time.countdown(remain)
 let token = 'Remaining: d days H hours m minutes s seconds'
@@ -142,12 +143,13 @@ Returns the amount of time counted down.
 
 - `token` \<string\> Used to specify the output format. Example: 'Remaining: d days H hours m minutes s seconds' => "Remaining: 1 days 11 hours 4 minutes 38 seconds".
 
-| token | description  |
-| ----- | ------------ |
-| d     | days         |
-| H     | hours        |
-| m     | minutes      |
-| s     | seconds      |
-| S     | milliseconds |
+| token        | description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| d            | days                                                         |
+| H            | hours                                                        |
+| m            | minutes                                                      |
+| s            | seconds                                                      |
+| S            | milliseconds                                                 |
+| \#\<number\> | The prefix indicates that zero is padded to the specified width. Example: #3d means to fill the number of days to 3 characters, 001. |
 
 Format the amount of time as a string.

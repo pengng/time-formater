@@ -28,9 +28,10 @@ describe('测试 timeformater.js', function () {
     })
 
     it('测试 countdown()', function () {
-        assert(time.countdown(1e5).format('d天H小时m分钟s秒') === '1天3小时46分钟40秒')
+        assert(time.countdown(1e5).format('#2d天H小时m分钟#2s秒') === '01天3小时46分钟40秒', 'format() 填充零功能异常')
         assert(time.countdown(4000).format('m分钟') === '66分钟')
         assert(time.countdown(4000).format('H小时m分钟') === '1小时6分钟')
-        assert(time.countdown(2000.293).format('m分钟s秒S毫秒') === '33分钟20秒293毫秒')
+        assert(time.countdown(2000.003).format('m分钟s秒#3S毫秒') === '33分钟20秒003毫秒', 'countdown() 处理小数异常')
+        assert(time.countdown(-100).format('m分钟s秒S毫秒') === '0分钟0秒0毫秒', 'countdown() 处理负数异常')
     })
 })

@@ -125,6 +125,7 @@ console.log(fromNow) // 4个月前
 ## 倒计时
 
 ```javascript
+const time = require('time-formater')
 let remain = 100000 // 10万秒
 let countdown = time.countdown(remain)
 let token = '剩余：d天H小时m分钟s秒'
@@ -145,13 +146,14 @@ countdown.format(token) // 剩余：1天3小时46分钟40秒
 
 - `token` \<string\> 用于指定输出格式。例：'剩余：d天H小时m分钟s秒' => "剩余：1天11小时4分钟38秒"。
 
-| token | 描述   |
-| ----- | ------ |
-| d     | 天数   |
-| H     | 小时数 |
-| m     | 分钟数 |
-| s     | 秒数   |
-| S     | 毫秒数 |
+| token        | 描述                                                         |
+| ------------ | ------------------------------------------------------------ |
+| d            | 天数                                                         |
+| H            | 小时数                                                       |
+| m            | 分钟数                                                       |
+| s            | 秒数                                                         |
+| S            | 毫秒数                                                       |
+| \#\<number\> | 前缀，表示在前面填充零到指定宽度。 例：#3d 表示将天数填充到3个字符，001 。 |
 
 将时间量格式化为字符串。
 

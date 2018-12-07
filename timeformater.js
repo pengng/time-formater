@@ -212,29 +212,34 @@ TimeFormater.countdown = function (time) {
         endPoint = time.getTime()
     }
 
-    return {
-        /**
-         * 将剩余的时间量格式化为字符串
-         * @param {string} token 用于指定输出格式。例：'剩余：d天H小时m分钟s秒' => "剩余：1天11小时4分钟38秒"。
-         */
-        format: function (token) {
-            let now = Date.now()
-            let remain = endPoint - now
-            let limit = 0 // 忽略负数
-            remain = Math.max(limit, remain)
+    /**
+     * 将剩余的时间量格式化为字符串
+     * @param {string} token 用于指定输出格式。例：'剩余：d天H小时m分钟s秒' => "剩余：1天11小时4分钟38秒"。
+     */
+    let format = function (token) {
+        let now = Date.now()
+        let remain = endPoint - now
+        let limit = 0 // 忽略负数
+        remain = Math.max(limit, remain)
 
-            return token.replace(/[dHmsS]/g, function (key) {
-                // 如果存在换算单位，则进行单位转换
-                if (UNIT_SIZE[key]) {
-                    let r = remain
-                    remain %= UNIT_SIZE[key]
-                    return parseInt(r / UNIT_SIZE[key])
-                } else {
-                    return key
+        return token.replace(/(?:#(\d+))?([dHmsS])/g, function (all, width, key) {
+            // 如果存在换算单位，则进行单位转换
+            if (UNIT_SIZE[key]) {
+                let r = remain
+                remain %= UNIT_SIZE[key]
+                let str = parseInt(r / UNIT_SIZE[key]).toString()
+                // 如果指定宽度，则进行填充处理
+                if (width && str.length < width) {
+                    str = new Array(width - str.length).fill(0).join('') + str
                 }
-            })
-        }
+                return str
+            } else {
+                return key
+            }
+        })
     }
+
+    return { format }
 }
 
 module.exports = TimeFormater
