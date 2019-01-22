@@ -125,8 +125,14 @@ console.log(fromNow) // 4个月前
 const time = require('time-formater')
 let remain = 100000 // 10,000 seconds
 let countdown = time.countdown(remain)
-let token = 'Remaining: d days H hours m minutes s seconds'
-countdown.format(token) // Remaining: 1 days 3 hours 46 minutes 40 seconds
+let token = 'Remaining: d days H:m:s'
+
+// Browser
+function step() {
+    document.title = countdown.format(token) // Remaining: 1 days 3:46:40
+    requestAnimationFrame(step)
+}
+step()
 ```
 
 

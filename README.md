@@ -14,7 +14,7 @@ npm i -S time-formater
 ```
 
 ```javascript
-const dtime = require('time-formater')
+const time = require('time-formater')
 
 let rawDate = time().format('YYYY-MM-DD HH:mm:ss') // 当前时间
 console.log(rawDate) // 2017-05-21 15:19:34
@@ -129,7 +129,13 @@ const time = require('time-formater')
 let remain = 100000 // 10万秒
 let countdown = time.countdown(remain)
 let token = '剩余：d天H小时m分钟s秒'
-countdown.format(token) // 剩余：1天3小时46分钟40秒
+
+// 浏览器
+function step() {
+    document.title = countdown.format(token) // 剩余：1天3小时46分钟40秒
+    requestAnimationFrame(step)
+}
+step()
 ```
 
 
