@@ -1,5 +1,5 @@
 const assert = require('assert')
-const time = require('../index')
+const time = require('../lib/timeformater')
 
 describe('测试 timeformater.js', function () {
     
